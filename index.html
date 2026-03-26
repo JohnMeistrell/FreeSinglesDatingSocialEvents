@@ -8,7 +8,7 @@
 <body style="max-width: 600px;">
 
     <header>
-        <h1>Free Singles Dating Social Events</h1>
+        <h1 id="myTitle" >Free Singles Dating Social Events</h1>
     </header>
 
     <main>
@@ -33,26 +33,67 @@
             <p>We will start with one of the popular selections: Old-fashioned relationship values, a slow paced walk and optional dinner/coffee, and add more activies and places as our group grows. We combine best of both and keep it simple, consistent, and for most events $free.</p>
         </div>
 
-        <div class="blog-post">
-            <h2>Where and When:</h2>
+        <div class="blog-post"> 
 
-            <div style= "background-color: lightblue;"> 
-            <h3>Every Sunday 1pm PK Nine, Mount Laurel, NJ</h3>
+            <div>
+            <h2  style= "display: inline-block; ">Where and When:</h2>
+            <button type="button" onclick="allEvents()">All</button>
+            <select name="myEvent" id="myEvent" onchange="selectEvent(this.value)"  style= "display: inline-block; ">
+              <option value= "PKNine" selected >PK Nine(default) </option> 
+              <option value= "Ocean"           >Ocean County Mall</option> 
+              <option value= "Woodbridge"      >Woodbridge Mall</option>
+              <option value= "Menlo"           >Menlo Park Mall</option>
+              <option value= "Monmouth"        >Monmouth Mall</option>
+              <option value= "FreeholdRaceway" >Freehold Raceway Mall</option>
+              <option value= "Cherry"          >Cherry Hill Mall</option>
+
+            </select>
+            </div>
+
+            <div id="PKNine" class="allEventsHide" style= "background-color: lightblue;"> 
+            <h3>Every Sunday 1pm PK Nine, 127 Ark Rd #4, Mt Laurel, NJ</h3>
             <p>PK Nine fee is $10 per person, per day to play cards and board games. The Staff will show you how.</p>
             <div style="height: 200px; border: 1px solid black; overflow: hidden;">
-            <a href="https://pdknine.com/"><img src="images/PKNine.jpg" alt="HTML tutorial" style="width: 100%; height: 100%; object-fit: cover;"></a>
+            <a target="_blank" href="https://pdknine.com/"><img src="images/PKNine.jpg" alt="HTML tutorial" style="width: 100%; height: 100%; object-fit: cover;"></a>
             </div></div>
 
-            <div style= "background-color: lightgreen;"> 
+            <div id="Ocean" class="allEventsHide" style= "background-color: lightgreen;"> 
             <h3>Every Sunday (Starting Apr 12th) at 2pm Ocean County Mall, 1201 Hooper Ave, Toms River, NJ</h3>
             <p>We will meet inside by the mall by JCPenney near the County Connection. We will talk and walk at a slow pace, inside or outside the mall. Dinner optional.</p>
             <div style="height: 200px; border: 1px solid black; overflow: hidden;">
             <img src="images/MeetInsideMallAtJCPenneyEntrance.jpg" alt="Description of image" style="width: 100%; height: 100%; object-fit: cover;">
             </div></div>
 
+            <div id="Cherry" class="allEventsHide" style= "background-color: pink;"> 
+            <h3>Every Sunday (Start Apr 12th) at 2pm Cherry Hill Mall, 2000 NJ-38, Cherry Hill Township, NJ (We need a HOST.)</h3>
+            <p>Please signup to show your interested.</p>
+            <p>To volunteer as a Host contact Richie through: <a target="_blank" href="https://www.meetup.com/entertainment-club-of-nj/">Entertainment Club of NJ</a> ( https://www.meetup.com/entertainment-club-of-nj/ ).</p>
+            <p>We will meet inside by the mall by Macy's. We will talk and walk at a slow pace, inside or outside the mall. Dinner optional.</p>
+            </div>
+
+            <div id="FreeholdRaceway" class="allEventsHide" style= "background-color: lightblue;"> 
+            <h3>Every Sunday (Starting Apr 12th) at 2pm Freehold Raceway Mall, 3710 US-9, Freehold, NJ</h3>
+            <p>We will meet inside by the mall by Macy's. We will talk and walk at a slow pace, inside or outside the mall. Dinner optional.</p>
+            </div>
+
+            <div id="Monmouth" class="allEventsHide" style= "background-color: orange;"> 
+            <h3>Working on website: Monmouth Mall</h3>
+            <p>We will meet inside by the mall by ??? We will talk and walk at a slow pace, inside or outside the mall. Dinner optional.</p>
+            </div>
+
+            <div id="Woodbridge" class="allEventsHide" style= "background-color: Chocolate;"> 
+            <h3>Working on website: Woodbridge Mall</h3>
+            <p>We will meet inside by the mall by ??? We will talk and walk at a slow pace, inside or outside the mall. Dinner optional.</p>
+            </div>
+
+            <div id="Menlo" class="allEventsHide" style= "background-color: orange;"> 
+            <h3>Working on website: Menlo Park Mall</h3>
+            <p>We will meet inside by the mall by ??? We will talk and walk at a slow pace, inside or outside the mall. Dinner optional.</p>
+            </div>
+
             <div style= "background-color: yellow;"> 
             <h3>Future EVENTs places, days, and times:</h3>
-            <p>Please leave a comment with your suggestions on places, days, and times for dating events, on meetup <a href="https://www.meetup.com/entertainment-club-of-nj/">Entertainment Club of NJ</a> ( https://www.meetup.com/entertainment-club-of-nj/ ). We are thinking about Wednesday afternoon 11am and/or Wednesday nights 6pm.</p>
+            <p>Please leave a comment with your suggestions on places, days, and times for dating events, on meetup <a target="_blank" href="https://www.meetup.com/entertainment-club-of-nj/">Entertainment Club of NJ</a> ( https://www.meetup.com/entertainment-club-of-nj/ ). We are thinking about Wednesday afternoon 11am and/or Wednesday nights 6pm.</p>
             </div>
 
         </div>
@@ -87,7 +128,52 @@
 
 
     </main>
-  
+
+<script type="text/javascript"> 
+
+/*       --------------      ------------------------------------------------------------------------------------------ */
+function allEvents() {
+/*       --------------      ------------------------------------------------------------------------------------------ */
+
+  const elements1 = document.querySelectorAll('.allEventsHide');
+  elements1.forEach(element1 => {
+    element1.hidden = false;
+  });
+
+  var myEventID      = document.getElementById("myEvent");
+  myEventID.selectedIndex = -1;
+}
+
+/*       --------------      ------------------------------------------------------------------------------------------ */
+function hideElementsByClass(className) {
+/*       --------------      ------------------------------------------------------------------------------------------ */
+  const elements = document.querySelectorAll('.' + className);
+  elements.forEach(element => {
+    element.hidden = true;
+  });
+}
+
+/*       --------------      ------------------------------------------------------------------------------------------ */
+function selectEvent(selectedValue) { 
+/*       --------------      ------------------------------------------------------------------------------------------ */
+    if (selectedValue) { 
+
+    var myTitlePart1 = "Free Singles Dating Social Events";
+
+    var myTitle      = document.getElementById("myTitle");
+    myTitle.value       = myTitlePart1 + " - " + selectedValue; 
+    myTitle.textContent = myTitlePart1 + " - " + selectedValue;
+
+    hideElementsByClass('allEventsHide');
+    var aaa = document.getElementById(selectedValue);
+    document.getElementById(selectedValue).hidden = false; 
+
+    }
+}
+
+</script>
+
+ 
 
 </body>
 </html>
